@@ -1,0 +1,52 @@
+﻿<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<title>Управление на бойлер</title>
+	<meta charset="utf-8" />
+
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+
+	<script type="text/javascript" src="js/main.js"></script>
+
+</head>
+
+<body onLoad="init();">
+	<div class="container">
+		<label class="heading">Water Heater Controll</label>
+		<div class="power">
+			<p class="text">Power:</p>
+			<div id="power-switch" class="power-switch">
+				<label class="switch">
+					<input id="checkbox" value="off" type="checkbox" onclick="onPowerChange()">
+					<span class="power-sw-slider round"></span>
+				</label>
+			</div>
+			<p class="text">Current temperature:</p>
+			<p id="current-temperature"></p>
+			<p class="text">&deg;C</p>
+		</div>
+		
+		<div id="setpoint" class="setpoint-container">
+			<p class="text heat-state" id="heat-state"></p>
+			<div class="setpoint-subcontainer">
+				<label id="sliderVal" class="temp-slider-value"></label>
+				<input type="range" min="30" max="90" step="1" value="40" id="slider" class="temp-slider"
+					onchange="onTempValueChange()" />
+			</div>
+		</div>
+	</div>
+
+	<script>
+		slider = document.getElementById("slider");
+		output = document.getElementById("sliderVal");
+		output.innerHTML = slider.value;
+
+		slider.oninput = function () {
+			output.innerHTML = this.value;
+		}
+	</script>
+</body>
+
+</html>
